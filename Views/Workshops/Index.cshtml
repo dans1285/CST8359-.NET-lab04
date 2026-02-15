@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Workshop RSVP System";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Workshop RSVP System</h1>
+    <p class="lead mt-4">Register for our upcoming technical workshops and enhance your skills!</p>
+    
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Available Workshops</h5>
+                    <ul class="list-unstyled mt-3">
+                        <li class="mb-2">📚 Routing Basics</li>
+                        <li class="mb-2">🗄️ EF Core Introduction</li>
+                        <li class="mb-2">⚡ Razor Essentials</li>
+                        <li class="mb-2">🎯 MVC Architecture Deep Dive</li>
+                    </ul>
+                    
+                    <div class="mt-4">
+                        <a asp-action="RsvpForm" class="btn btn-primary btn-lg me-2">
+                            <i class="bi bi-pencil-square"></i> Register Now
+                        </a>
+                        <a asp-action="Registrations" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-list-ul"></i> View Registrations
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mt-5">
+        <p class="text-muted">
+            <i class="bi bi-info-circle"></i> All workshops are free and include refreshments. 
+            Accommodation assistance is available upon request.
+        </p>
+    </div>
+</div>

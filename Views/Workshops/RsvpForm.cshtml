@@ -1,0 +1,66 @@
+@model Lab3WorkshopRsvp.Models.Rsvp
+
+@{
+    ViewData["Title"] = "Workshop Registration Form";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="mb-4">Workshop Registration Form</h2>
+        
+        <div class="card shadow">
+            <div class="card-body">
+                <form asp-action="Confirm" method="post">
+                    <div class="mb-3">
+                        <label asp-for="FullName" class="form-label">Full Name</label>
+                        <input asp-for="FullName" class="form-control" placeholder="Enter your full name" required />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">Email Address</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="your.email@example.com" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="WorkshopTitle" class="form-label">Select Workshop</label>
+                        <select asp-for="WorkshopTitle" class="form-select" required>
+                            <option value="">-- Choose a workshop --</option>
+                            <option value="Routing Basics">Routing Basics</option>
+                            <option value="EF Core Intro">EF Core Introduction</option>
+                            <option value="Razor Essentials">Razor Essentials</option>
+                            <option value="MVC Architecture Deep Dive">MVC Architecture Deep Dive</option>
+                        </select>
+                        <span asp-validation-for="WorkshopTitle" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <input asp-for="NeedsAccommodation" class="form-check-input" type="checkbox" />
+                            <label asp-for="NeedsAccommodation" class="form-check-label">
+                                I need accommodation assistance
+                            </label>
+                        </div>
+                        <small class="form-text text-muted">
+                            Check this if you require help with lodging arrangements
+                        </small>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Back
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-circle"></i> Submit Registration
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
