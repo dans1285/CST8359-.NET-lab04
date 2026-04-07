@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Lab3WorkshopRsvp.Models;
+using Lab4WorkshopRsvp.Models;
 
-namespace Lab3WorkshopRsvp.Controllers;
+namespace Lab4WorkshopRsvp.Controllers;
 
 public class HomeController : Controller
 {

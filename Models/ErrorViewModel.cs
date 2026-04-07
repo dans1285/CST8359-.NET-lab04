@@ -1,4 +1,4 @@
-namespace Lab3WorkshopRsvp.Models;
+namespace Lab4WorkshopRsvp.Models;
 
 public class ErrorViewModel
 {

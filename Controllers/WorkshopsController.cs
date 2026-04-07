@@ -1,12 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
-using Lab3WorkshopRsvp.Models;
+using Lab4WorkshopRsvp.Models;
+using Lab4WorkshopRsvp.Data;
 
-namespace Lab3WorkshopRsvp.Controllers
+namespace Lab4WorkshopRsvp.Controllers
 {
     public class WorkshopsController : Controller
     {
-        // Static list to store registrations in memory
-        private static List<Rsvp> registrations = new List<Rsvp>();
+        private readonly ApplicationDbContext _context;
+
+        // Constructor
+        public WorkshopsController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         // GET: Workshops/Index
         public IActionResult Index()
@@ -24,27 +30,27 @@ namespace Lab3WorkshopRsvp.Controllers
         [HttpPost]
         public IActionResult Confirm(Rsvp model)
         {
+            // Validation
             if (ModelState.IsValid)
             {
-                // Add to registrations list
                 model.RegistrationDate = DateTime.Now;
-                registrations.Add(model);
 
-                // Set confirmation message
+                _context.Rsvps.Add(model);
+                _context.SaveChanges();
+
                 ViewData["Message"] = $"Thanks for registering, {model.FullName}!";
                 
-                // Return strongly typed view with model
+                // Return strongly-typed View with the model so we can display details back to the user.
                 return View(model);
             }
 
-            // If model is invalid, return to form
             return View("RsvpForm", model);
         }
 
         // GET: Workshops/Registrations
         public IActionResult Registrations()
         {
-            return View(registrations);
+            return View(_context.Rsvps.ToList());
         }
     }
 }
